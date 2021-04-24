@@ -1,0 +1,428 @@
+MODULE M7 WRITING THE BUSINESS PLAN ACTION POINTS
+
+
+
+
+
+
+
+
+
+ADVICE ON WRITING
+
+
+
+
+
+
+
+Decide Controls
+
+Set Maximum Words
+
+Start Writing Early
+
+Minimise Appendices
+
+Aim to Guide Readers
+
+Produce to High Quality
+
+Avoid Use of First Person
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ADVICE ON LAYOUT
+
+
+
+
+
+
+
+
+
+Present in English
+
+Submit Two Copies
+
+Maximum 6000 Word Guideline
+
+At Least 12 Points
+
+Print on both sides
+
+15mm Margin
+
+A4 White Pages
+
+Fully Justified Left and Right
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MODULE M7WRITING THE BUSINESS PLAN
+
+
+
+1.Rationale
+
+A business plan is a widely used management tool
+
+It is used as an integrating method
+
+It is also used for control purposes.
+
+
+
+2.Definition
+
+
+
+Not to be confused with the project plan. The project plan can lead onto the business plan.The business plan controls the SOSTAC elements and simulation analysis.
+
+
+
+3.Advantages
+
+
+
+It is better to plan on paper
+
+To make mistakes on paper
+
+The business plan is a map
+
+
+
+4.Action Points
+
+
+
+Decide on format and controls
+
+Set maximum number of words
+
+Start writing easily
+
+Get some feedback before you commit yourself to a lot of writing
+
+Be prepared to change
+
+Use and review frequently
+
+Minimise appendices
+
+Aim to guide readers
+
+ 
+
+5.Do’s and Don’ts
+
+
+
+A business plan is a sustained piece of analysed writing
+
+It is not a description of your project.
+
+
+
+6.Thought Provoking Questions
+
+
+
+Q1.How integrated is your plan?
+
+Q2.How often will the plan be changed?
+
+
+
+7.Best Sources for Help
+
+
+
+Search www. for examples of good business plans
+
+Consult your books for help and literature.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MODULE M7: SAMPLE TECHNICAL DOCUMENTATION HEADINGS
+
+
+
+
+
+1.Introduction
+
+1.1Purpose and Scope
+
+1.2About the Website
+
+1.3Web Hosting
+
+
+
+2.Architectural Prespective
+
+2.1Web Application Architecture - General Prespective
+
+2.2Website Architecture
+
+
+
+3.Technologies Used
+
+3.1Server - Side Scripting Language
+
+3.2Client - Side Scripting Language
+
+3.3Database
+
+3.4HTML
+
+3.5<Any other>
+
+
+
+4.Web Solution
+
+4.1Directory Structure
+
+4.2Naming Conventions
+
+4.3Screen -Wise Functionality
+
+4.3.1Description of HTML files
+
+4.3.2Description of ASP files
+
+4.3.3<Any other pages>
+
+4.4Database
+
+4.4.1Table Description
+
+4.4.2Database Design
+
+4.4.3Queries Used 
+
+4.5Testing
+
+4.5.1Introduction
+
+4.5.2Unit Test Cases
+
+4.6Quality Assurance
+
+4.6.1Technical Assurance Checklist
+
+
+
+5.Sample Code
+
+
+
+
+
+MODULE M7PRODUCING THE WEB BASED SOLUTION          
+
+
+
+1.Rationale
+
+It is necessary for you to demonstrate that you can produce a web based solution that can satisfy a business to business or a business to customer application
+
+It is important that you can demonstrate that you can follow a formal development process
+
+It is necessary for you to provide documentation of your web based solution that facilitates easy subsequent maintenance.
+
+
+
+2Scope
+
+The solution should cover as a minimum the following
+
+Web page design
+
+Security log-on
+
+Database maintenance
+
+Reporting systems
+
+Web Hosting
+
+
+
+3.Documentation
+
+Must be professional. The documentation of your web based solution will demonstrate your abilities to a prospective employer. A piece of work that is of the standard produced by a major software house will mark you out as a practitioner rather than an amateur. It is strongly recommended that you follow a formal structure: sample technical documentation headings, overleaf.
+
+
+
+
+
+Action Points
+
+Review design issues from earlier units.
+
+Try to take a staged approach so that you get a simple solution fully working before attempting a more complex solution. This way, if you run out of time before you complete the complex version, you will, nevertheless, have a working solution.
+
+Remember the importance of testing
+
+Leave time for uploading the web pages onto the server and to test them again once they are in situ.
+
+
+
+5.Do’s and Don’ts
+
+Concentrate on usability rather than technical complexity.
+
+Maintain good organisation of documentation
+
+
+
+6.Best Sources for Help
+
+
+
+Refer to Website Design Notes
+
+Look at professionally produced documentation.
+
+
+
+
+
