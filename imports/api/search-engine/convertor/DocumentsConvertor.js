@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const mammoth = require("mammoth");
 
-class DocumentsParser {
+class DocumentsConvertor {
     documentsPath = "";
 
     constructor(documentsPath, documentsExtension = "docx") {
@@ -28,4 +28,4 @@ class DocumentsParser {
     }
 }
 
-module.exports = DocumentsParser;
+module.exports = DocumentsConvertor;
