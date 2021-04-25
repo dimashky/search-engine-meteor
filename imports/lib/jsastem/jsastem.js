@@ -24,8 +24,13 @@ known_roots
 ?
 
 */
+const XRegExp = require("xregexp");
 
-function jsastem( input) {
+function debug(d) {
+
+}
+
+module.exports = function jsastem( input) {
 	var showdebug = 1;
 	var stem = input;
 	var candidate_roots = [];
