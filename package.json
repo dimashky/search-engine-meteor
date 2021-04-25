@@ -13,6 +13,7 @@
     "mammoth": "^1.4.16",
     "meteor-node-stubs": "^1.0.1",
     "porter-stemmer": "^0.9.1",
+    "stopword": "^1.0.7",
     "vue": "^2.6.12",
     "vue-meteor-tracker": "^2.0.0-beta.5"
   },
