@@ -15,7 +15,7 @@ class DocumentsConvertor {
      *
      * @param {string} targetType
      * @param {boolean} writeConvertedFiles
-     * @returns {Promise<string[]>}
+     * @returns {Promise<{}[]>}
      */
     async covertAllDocuments(targetType = "html", writeConvertedFiles = false) {
         const destinationExtension = targetType === "html" ? ".html" : ".txt"
@@ -27,16 +27,17 @@ class DocumentsConvertor {
         });
 
         const convertedFiles = await Promise.all(convertPromises);
+        const response =  convertedFiles.map((file, idx) => ({ path: filenames[idx], text: file.value }));
 
         if(!writeConvertedFiles) {
-            return convertedFiles.map(file => file.value);
+            return response;
         }
 
         filenames.forEach((filename, idx) => {
             const txtPath = path.resolve(this.documentsPath, filename.replace(`.${this.documentsExtension}`, destinationExtension));
             fs.writeFileSync(txtPath, convertedFiles[idx].value);
-        })
-        return convertedFiles.map(file => file.value);
+        });
+        return response;
     }
 
     /**
@@ -45,7 +46,7 @@ class DocumentsConvertor {
      * @param {string} documentPath
      * @returns {Promise<string>} converted docx
      */
-    async static convertDocument(documentPath) {
+    static async convertDocument(documentPath) {
         return (await mammoth.convert({ path: documentPath })).value;
     }
 }

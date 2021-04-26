@@ -1,5 +1,5 @@
-require('../../../lib/arabicString/arabicString');
-const arabicStemmer = require('../../../lib/jsastem/jsastem');
+require('../../lib/arabicString');
+const arabicStemmer = require('../../lib/jsastem/jsastem');
 const XRegExp = require("xregexp");
 const stopWordHandler = require('stopword')
 const natural = require('natural');
@@ -17,7 +17,8 @@ class TextProcessor {
      */
     static async processText(text) {
         const tokens = TextProcessor.tokenizeText(text);
-        return await TextProcessor.stemText(tokens);
+        const filteredTokens = TextProcessor.removeStopWords(tokens);
+        return await TextProcessor.stemText(filteredTokens);
     }
 
     /**
@@ -36,12 +37,13 @@ class TextProcessor {
     /**
      * Remove the stop words for a text
      *
-     * @param {string} text The text that want to remove the stop words
+     * @param {string[]} tokens The text that want to remove the stop words
+     * @param {boolean} arabic
      * @returns Array<String> The result word tokens
      */
-    static removeStopWords(text) {
-        const locale = text.isArabic(0.6) ? stopWordHandler.ar : stopWordHandler.en;
-        return stopWordHandler.removeStopwords(text.split(' '), locale);
+    static removeStopWords(tokens, arabic = false) {
+        const locale = arabic ? stopWordHandler.ar : stopWordHandler.en;
+        return stopWordHandler.removeStopwords(tokens, locale);
     }
 
     /**

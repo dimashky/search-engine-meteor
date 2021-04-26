@@ -1,1 +1,2 @@
 import './createLink'
+import './indexer'
