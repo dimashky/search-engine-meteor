@@ -1,9 +1,10 @@
 require('../../lib/arabicString');
-const arabicStemmer = require('../../lib/jsastem/jsastem');
-const XRegExp = require("xregexp");
 const stopWordHandler = require('stopword')
 const natural = require('natural');
 const tokenizer = require( 'wink-tokenizer')();
+const snowballFactory = require("../../lib/arabic-stemmer-snowball");
+
+const ArabicStemmer = snowballFactory.newStemmer("arabic");
 
 class TextProcessor {
     static wordTagsList = ['alien', 'punctuation', 'word', 'symbol', 'url', 'number', 'emoticon', 'mention', 'email'];
@@ -13,12 +14,12 @@ class TextProcessor {
      * Tokenize text and stemming the resulted tokens
      *
      * @param text
-     * @returns {Promise<string[]>}
+     * @returns {string[]}
      */
-    static async processText(text) {
+    static processText(text) {
         const tokens = TextProcessor.tokenizeText(text);
         const filteredTokens = TextProcessor.removeStopWords(tokens);
-        return await TextProcessor.stemText(filteredTokens);
+        return TextProcessor.stemText(filteredTokens);
     }
 
     /**
@@ -50,26 +51,23 @@ class TextProcessor {
      * Stemming text into array of stemmed tokens
      *
      * @param {string[]}tokens Word tokens
-     * @returns {Promise<string[]>}
+     * @returns {string[]}
      */
-    static async stemText(tokens) {
-        const promises = tokens.map(token => TextProcessor.stemWord(token));
-        return Promise.all(promises);
+    static stemText(tokens) {
+        return tokens.map(token => TextProcessor.stemWord(token));
     }
 
     /**
      * Stemming word
      *
      * @param {string} word The desired word
-     * @returns {Promise<String>}
+     * @returns {string}
      */
     static stemWord(word) {
-        return new Promise(resolve => {
-            if(word.isArabic()) {
-                return XRegExp.forEach( word, XRegExp('[\\p{Arabic}\\p{M}]+'), (match) => resolve(arabicStemmer(match[0])));
-            }
-            resolve (natural.LancasterStemmer.stem(word));
-        });
+        if(word.isArabic()) {
+            return ArabicStemmer.stem(word);
+        }
+        return (natural.LancasterStemmer.stem(word));
     }
 }
 
