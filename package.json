@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
+    "choices.js": "^9.0.1",
     "mammoth": "^1.4.16",
+    "mathjs": "^9.3.2",
     "meteor-node-stubs": "^1.0.1",
     "natural": "^5.0.3",
     "stopword": "^1.0.7",
