@@ -1,2 +1,2 @@
-import './createLink'
 import './indexer'
+import './matcher'
