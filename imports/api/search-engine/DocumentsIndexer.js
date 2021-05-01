@@ -56,14 +56,17 @@ class DocumentsIndexer {
             if(!record) {
                 return TermsCollection.insert({
                     term,
-                    documents: [documentPath]
+                    documents: [{ doc: documentPath, count: 1 }]
                 })
             }
-            const oldDocuments = record.documents;
-            if(!oldDocuments.includes(documentPath)) {
-                oldDocuments.push(documentPath);
-                TermsCollection.update({ term }, { term, documents: oldDocuments });
+            const documentIndex = record.documents.findIndex(d => d.doc === documentPath)
+            if(documentIndex < 0) {
+                record.documents.push({ doc: documentPath, count: 1 });
             }
+            else {
+                record.documents[documentIndex].count++;
+            }
+            TermsCollection.update({ term }, { term, documents: record.documents });
         })
     }
 }
