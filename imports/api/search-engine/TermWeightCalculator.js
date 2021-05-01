@@ -14,7 +14,7 @@ class TermWeightCalculator {
     }
 
     static idf(term) {
-        return Math.log(DocumentsCollection.find().count() / DocumentsCollection.find({ terms: { $in: [term] } }).count());
+        return Math.log(1 + DocumentsCollection.find().count() / DocumentsCollection.find({ terms: { $in: [term] } }).count());
     }
 }
 
