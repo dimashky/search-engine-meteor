@@ -9,7 +9,6 @@ mobile-experience@1.1.0       # Packages for a great mobile UX
 mongo@1.11.0                   # The database Meteor supports right now
 reactive-var@1.0.11            # Reactive variable for tracker
 
-standard-minifier-css@1.7.2   # CSS minifier run for production mode
 standard-minifier-js@2.6.0    # JS minifier run for production mode
 es5-shim@4.8.0                # ECMAScript 5 compatibility for older browsers
 ecmascript              # Enable ECMAScript2015+ syntax in app code
@@ -23,3 +22,4 @@ meteortesting:mocha               # A package for writing and running your meteo
 johanbrook:publication-collector  # Test a Meteor publication by collecting its output
 static-html
 ostrio:meteor-root
+hexsprite:postcss
