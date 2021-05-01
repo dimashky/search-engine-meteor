@@ -1,5 +1,5 @@
 <template>
-    <div class="flex h-full items-center flex-col min-h-screen bg-gray-100">
+    <div class="flex h-full items-center flex-col min-h-screen bg-gray-100 overflow-y-scroll">
         <div class="w-full">
             <div class="text-center mt-3">
                 <div class="text-2xl font-bold">Information Retrieval Homework F20</div>

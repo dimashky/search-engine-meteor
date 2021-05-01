@@ -28,7 +28,10 @@ export default {
             query: '',
         }
     },
-    mounted() {
+    watch: {
+        model() {
+            this.submit();
+        }
     },
     methods: {
         submit() {
