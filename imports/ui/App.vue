@@ -8,10 +8,12 @@
                     <span>iman_129732</span>
                 </div>
             </div>
-            <search-input @search="handleSearchChanged" />
+            <search-input @search="handleSearchChanged" @config="configModal = true" />
         </div>
 
         <results-list v-if="results" :results="results" />
+
+        <engine-config v-model="configModal" />
     </div>
 </template>
 
@@ -19,14 +21,17 @@
 
 import SearchInput from "./components/SearchInput";
 import ResultsList from "./components/ResultsList";
+import EngineConfig from "./components/EngineConfig";
+
 export default {
-    components: {ResultsList, SearchInput},
+    components: {EngineConfig, ResultsList, SearchInput},
     data() {
         return {
             query: '',
             firstLoad: true,
             results: null,
-            loading: false
+            loading: false,
+            configModal: false
         }
     },
     methods: {

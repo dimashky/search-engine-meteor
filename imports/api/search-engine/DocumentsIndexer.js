@@ -12,6 +12,11 @@ class DocumentsIndexer {
     documentsPath = "";
 
     /**
+     * @type {string[]}
+     */
+    onlyDocuments = null;
+
+    /**
      * type {DocumentsConvertor}
      */
     parser;
@@ -19,24 +24,27 @@ class DocumentsIndexer {
     /**
      * Class constructor
      * @param {string} documentsPath
+     * @param {string[]} onlyDocuments
      */
-    constructor(documentsPath) {
+    constructor(documentsPath, onlyDocuments = null) {
         this.documentsPath = documentsPath;
+        this.onlyDocuments = onlyDocuments;
         this.parser = new DocumentsConvertor(documentsPath);
     }
 
     /**
      * Index documents
      *
-     * @returns {Promise<void>}
+     * @returns {Promise<boolean>}
      */
     async indexDocuments() {
-        const documents = await this.parser.covertAllDocuments("text", false);
+        const documents = await this.parser.covertAllDocuments("text", false, this.onlyDocuments);
         for (let idx = 0; idx < documents.length; ++idx) {
             const document = documents[idx];
             console.log(`Indexing document ${document.path} ....`);
             await this.indexDocument(document.text, document.path);
         }
+        return true;
     }
 
     /**

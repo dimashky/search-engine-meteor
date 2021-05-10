@@ -15,11 +15,12 @@ class DocumentsConvertor {
      *
      * @param {string} targetType
      * @param {boolean} writeConvertedFiles
+     * @param {string?[]} onlyFiles
      * @returns {Promise<{}[]>}
      */
-    async covertAllDocuments(targetType = "html", writeConvertedFiles = false) {
+    async covertAllDocuments(targetType = "html", writeConvertedFiles = false, onlyFiles = null) {
         const destinationExtension = targetType === "html" ? ".html" : ".txt"
-        const filenames = fs.readdirSync(this.documentsPath).filter(filename => filename.match(new RegExp(`.*.${this.documentsExtension}`, "g")));
+        const filenames = fs.readdirSync(this.documentsPath).filter(filename => (!onlyFiles || onlyFiles.includes(filename)) && filename.match(new RegExp(`.*.${this.documentsExtension}`, "g")));
 
         const convertPromises = filenames.map(filename => {
             const targetPath = path.resolve(this.documentsPath, filename);

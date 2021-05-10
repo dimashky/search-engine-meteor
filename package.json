@@ -17,6 +17,7 @@
     "stopword": "^1.0.7",
     "vue": "^2.6.12",
     "vue-meteor-tracker": "^2.0.0-beta.5",
+    "vue-tailwind-modal": "^1.0.5",
     "wink-tokenizer": "^5.2.3"
   },
   "meteor": {
