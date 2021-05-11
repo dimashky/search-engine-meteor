@@ -8,10 +8,10 @@
                     <span>iman_129732</span>
                 </div>
             </div>
-            <search-input @search="handleSearchChanged" @config="configModal = true" />
+            <search-input :loading="loading" @search="handleSearchChanged" @config="configModal = true" />
         </div>
 
-        <results-list v-if="results" :results="results" />
+        <results-list v-if="results" v-show="!loading" :results="results" />
 
         <engine-config v-model="configModal" />
     </div>

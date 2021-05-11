@@ -4,6 +4,7 @@ module.exports = {
     './client/**/*.vue',
     './client/**/*.jsx',
     './imports/**/*.vue',
+    './node_modules/vue-tailwind-modal/**/*.vue',
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {

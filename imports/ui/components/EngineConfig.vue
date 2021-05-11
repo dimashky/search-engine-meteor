@@ -17,20 +17,14 @@
                         <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                         </svg>
-                        <span class="mt-2 text-base leading-normal text-center">Select Documents<br/>(only .txt or .docs)</span>
-                        <input type='file' class="hidden" multiple @change="handleFileSelect" accept="application/vnd.openxmlformats-officedocument.wordprocessingml.document, text/plain" />
+                        <span class="mt-2 text-base leading-normal text-center">Select Documents<br/>(only .docx)</span>
+                        <input type='file' class="hidden" multiple @change="handleFileSelect" accept="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
                     </label>
                 </div>
                 <div v-if="files.length" class="text-gray-500 mt-2 mb-3">
-                    {{ files.map(f => f.name).join(', ') }}
+                    Selected files: {{ files.map(f => f.name).join(', ') }}
                 </div>
-                <div>
-                    <select v-model="filesLocale">
-                        <option value="ar" v-text="'عربي'"/>
-                        <option value="en" v-text="'English'"/>
-                    </select>
-                </div>
-                <div class="text-right">
+                <div class="text-center mt-4">
                     <button class="rounded px-6 py-2 text-white outline-none focus:outline-none"
                             :class="files.length && !indexing ? 'bg-purple-700 hover:text-purple-700 hover:bg-white' : 'bg-purple-400 pointer-events-none'"
                             :disabled="!files.length || indexing"
@@ -54,16 +48,13 @@
                 <div class="flex items-center gap-4">
                     <div class="font-bold text-lg">Weighing algorithm</div>
                     <div>
-                        <select v-model="weightAlgorithm">
+                        <select v-model="weightAlgorithm" @change="handleSubmitWeightingAlgorithm">
                             <option value="tf" v-text="'TF'"/>
                             <option value="idf" v-text="'IDF'"/>
                             <option value="tf-idf" v-text="'TF-IDF'"/>
                         </select>
                     </div>
                 </div>
-                <button class="rounded bg-purple-700 px-6 py-2 text-white hover:text-purple-700 hover:bg-white focus:outline-none outline-none" @click="handleSubmitWeightingAlgorithm">
-                    Save
-                </button>
             </div>
         </vue-tailwind-modal>
     </div>
