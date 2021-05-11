@@ -10,12 +10,12 @@
                 </button>
             </div>
             <div class="flex justify-between align-middle gap-x-4 gap-y-3">
-                <select v-model="model" class="bg-transparent py-2 outline-none border-r-2 bg-purple-800 text-white px-4 rounded rounded-full w-1/3">
+                <select v-model="model" class="bg-transparent py-2 outline-none border-r-2 bg-purple-800 text-white px-4 rounded rounded-full w-1/3 focus:outline-none">
                     <option value="boolean">Boolean Model</option>
                     <option value="ext-boolean">Extended Boolean Model</option>
                     <option value="vector">Vector model</option>
                 </select>
-                <button class="bg-white border border-purple-900 px-4 py-2 rounded rounded-full w-1/3 hover:bg-purple-700 outline-none hover:shadow hover:text-white" @click="$emit('config')">
+                <button class="bg-white border border-purple-900 px-4 py-2 rounded rounded-full w-1/3 hover:bg-purple-700 outline-none focus:outline-none hover:shadow hover:text-white" @click="$emit('config')">
                     Settings
                 </button>
             </div>

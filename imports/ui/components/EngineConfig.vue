@@ -8,8 +8,8 @@
                 @close="handleClose"
         >
             <div>
-                <alert v-if="successMessage" :message="successMessage" type="success" />
-                <alert v-else-if="errorMessage" :message="errorMessage" type="error" />
+                <alert v-show="successMessage" :message="successMessage" type="success" />
+                <alert v-show="errorMessage" :message="errorMessage" type="error" />
 
                 <div class="font-bold text-xl mb-2">Index New Documents</div>
                 <div class="flex w-full items-center justify-center bg-grey-lighter">
@@ -31,7 +31,7 @@
                     </select>
                 </div>
                 <div class="text-right">
-                    <button class="rounded px-6 py-2 text-white"
+                    <button class="rounded px-6 py-2 text-white outline-none focus:outline-none"
                             :class="files.length && !indexing ? 'bg-purple-700 hover:text-purple-700 hover:bg-white' : 'bg-purple-400 pointer-events-none'"
                             :disabled="!files.length || indexing"
                             @click="handleSubmitNewDocuments">
@@ -49,21 +49,21 @@
                     </button>
                 </div>
             </div>
-            <hr class="mx-4 my-3" />
-            <div>
-                <div class="font-bold text-xl mb-2">Weighing algorithm</div>
-                <div>
-                    <select v-model="weightAlgorithm">
-                        <option value="tf" v-text="'TF'" selected/>
-                        <option value="idf" v-text="'IDF'"/>
-                        <option value="tf-idf" v-text="'TF-IDF'"/>
-                    </select>
+            <hr class="mx-4 mt-6 mb-12" />
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="font-bold text-lg">Weighing algorithm</div>
+                    <div>
+                        <select v-model="weightAlgorithm">
+                            <option value="tf" v-text="'TF'"/>
+                            <option value="idf" v-text="'IDF'"/>
+                            <option value="tf-idf" v-text="'TF-IDF'"/>
+                        </select>
+                    </div>
                 </div>
-                <div class="text-right">
-                    <button class="rounded bg-purple-700 px-6 py-2 text-white hover:text-purple-700 hover:bg-white">
-                        Save
-                    </button>
-                </div>
+                <button class="rounded bg-purple-700 px-6 py-2 text-white hover:text-purple-700 hover:bg-white focus:outline-none outline-none" @click="handleSubmitWeightingAlgorithm">
+                    Save
+                </button>
             </div>
         </vue-tailwind-modal>
     </div>
@@ -84,6 +84,14 @@ export default {
     components: {
         Alert,
         VueTailwindModal
+    },
+    mounted() {
+        Meteor.call('getWeightingAlgorithm', (err, weightAlgorithm) => {
+            if (err) {
+                return this.errorMessage = err.message;
+            }
+            this.weightAlgorithm = weightAlgorithm;
+        })
     },
     data() {
         return {
@@ -115,6 +123,7 @@ export default {
         },
         handleSubmitNewDocuments() {
             this.errorMessage = '';
+            this.successMessage = '';
             this.indexing = true;
             Meteor.call('indexFiles', this.filesAsBinary, this.filesLocale, (err) => {
                 this.indexing = false;
@@ -124,8 +133,20 @@ export default {
                 this.successMessage = 'Documents indexed successfully';
                 this.files = [];
                 this.filesAsBinary = [];
+                setTimeout(() => this.successMessage = '', 3500);
             })
-        }
+        },
+        handleSubmitWeightingAlgorithm() {
+            this.errorMessage = '';
+            this.successMessage = '';
+            Meteor.call('setWeightingAlgorithm', this.weightAlgorithm, (err) => {
+                if (err) {
+                    return this.errorMessage = err.message;
+                }
+                this.successMessage = 'Settings updated successfully';
+                setTimeout(() => this.successMessage = '', 2500);
+            })
+        },
     }
 }
 </script>

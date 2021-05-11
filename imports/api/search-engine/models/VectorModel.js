@@ -13,7 +13,7 @@ class VectorModel {
         const relatedTerms = DocumentsFetcher.getTermsDocuments(query);
         const allDocuments = [...new Set(relatedTerms.reduce((prev, current) => prev.concat(current.documents.map(d => d.doc)), []))];
         const model = allDocuments.map(document => {
-            return relatedTerms.map(term => term.documents.find(d => d.doc === document) ? TermWeightCalculator.TfIdf(term.term, document) : 0);
+            return relatedTerms.map(term => term.documents.find(d => d.doc === document) ? TermWeightCalculator.getWeight(term.term, document) : 0);
         });
         const queryVector = new Array(relatedTerms.length).fill(1);
         return allDocuments
