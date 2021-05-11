@@ -1,0 +1,7 @@
+{
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb://root:hb_4Vf3R%@2mtdp@cluster0.5mtau.mongodb.net/meteor"
+    }
+  }
+}
