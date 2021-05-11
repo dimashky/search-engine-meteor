@@ -30,7 +30,7 @@
             <template v-if="!fetchingDocument">
                 <div class="text-purple-800 font-semibold hover:text-blue-800 text-xl">{{ selectedDocument.id }}</div>
                 <hr class="my-3" />
-                <div :dir="selectedDocument.isArabic ? 'rtl' : 'ltr'" v-html="selectedDocument.preview"/>
+                <div :dir="selectedDocument.isArabic ? 'rtl' : 'ltr'" v-html="previewedDocument"/>
             </template>
             <div v-else class="h-full flex justify-center items-center w-full">
                 <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-purple-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -50,6 +50,10 @@ export default {
         results: {
             type: Array,
             default: []
+        },
+        queryTokens: {
+            type: Array,
+            default: []
         }
     },
     data() {
@@ -57,6 +61,16 @@ export default {
             selectedDocument: null,
             fetchingDocument: false
         }
+    },
+    computed: {
+      previewedDocument() {
+          if(!this.selectedDocument) {
+              return '';
+          }
+          return this.selectedDocument.preview;
+      //    this.queryTokens.forEach(token => doc = doc.replace(new RegExp(`^${token}`, 'ig'), (matched) => `<span class="bg-yellow-300">${matched}</span>`));
+      //    return doc;
+      }
     },
     methods: {
         handleSelectDocument(documentId) {

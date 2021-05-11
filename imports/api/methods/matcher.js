@@ -9,16 +9,25 @@ const TextProcessor = require("../search-engine/TextProcessor");
 Meteor.methods({
     async match(query, selectedModel = 'boolean') {
         const queryTokens = TextProcessor.processText(query);
+        let results = [];
         switch (selectedModel) {
             case "vector":
-                return VectorModel.handle(queryTokens);
+                results = VectorModel.handle(queryTokens);
+                break;
             case "ext-boolean":
-                return ExtendedBooleanModel.handle(queryTokens);
+                results = ExtendedBooleanModel.handle(queryTokens);
+                break;
             case "ext-or-boolean":
-                return ExtendedBooleanModel.handle(queryTokens, true);
+                results = ExtendedBooleanModel.handle(queryTokens, true);
+                break;
             case "boolean":
             default:
-                return BooleanModel.handle(queryTokens);
+                results = BooleanModel.handle(queryTokens);
+                break;
+        }
+        return {
+            results,
+            queryTokens
         }
     },
 });

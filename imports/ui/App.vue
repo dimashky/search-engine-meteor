@@ -11,7 +11,7 @@
             <search-input :loading="loading" @search="handleSearchChanged" @config="configModal = true" />
         </div>
 
-        <results-list v-if="results" v-show="!loading" :results="results" />
+        <results-list v-if="results" v-show="!loading" :query-tokens="queryTokens" :results="results" />
 
         <engine-config v-model="configModal" />
     </div>
@@ -31,7 +31,8 @@ export default {
             firstLoad: true,
             results: null,
             loading: false,
-            configModal: false
+            configModal: false,
+            queryTokens: []
         }
     },
     methods: {
@@ -41,12 +42,14 @@ export default {
                 return;
             }
             this.loading = true;
-            Meteor.call('match', query, model, (error, result) => {
+            this.queryTokens = [];
+            Meteor.call('match', query, model, (error, {results, queryTokens = []}) => {
                 if (error) {
                     alert(error.error);
                     return this.loading = false;
                 }
-                this.results = result;
+                this.results = results;
+                this.queryTokens = query.split(' ');
                 this.loading = false;
             })
         }
