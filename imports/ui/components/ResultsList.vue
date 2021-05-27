@@ -1,7 +1,7 @@
 <template>
 <div class="container mb-12">
     <div :class="selectedDocument ? 'grid grid-cols-12 gap-4' : ''">
-        <div class="col-span-4 w-full max-w-2xl mx-auto bg-white shadow-lg p-3">
+        <div class="md:col-span-4 col-span-12 w-full max-w-2xl mx-auto bg-white shadow-lg p-3">
             <div v-if="results.length">
                 <div class="flex items-center gap-4">
                     <div class="font-semibold mb-2 text-lg">Results ({{ results.length }})</div>
@@ -26,7 +26,7 @@
                 No results
             </div>
         </div>
-        <div v-if="selectedDocument" class="bg-white px-2 py-3 col-span-8 h-full w-full">
+        <div v-if="selectedDocument" id="document-preview" class="bg-white px-2 py-3 md:col-span-8 col-span-12 h-full w-full">
             <template v-if="!fetchingDocument">
                 <div class="text-purple-800 font-semibold hover:text-blue-800 text-xl">{{ selectedDocument.id }}</div>
                 <hr class="my-3" />
@@ -74,6 +74,7 @@ export default {
     },
     methods: {
         handleSelectDocument(documentId) {
+            window.location.hash = '';
             if(this.selectedDocument && this.selectedDocument.id === documentId) {
                 return this.selectedDocument = null;
             }
@@ -88,6 +89,17 @@ export default {
                     preview: document.document,
                     isArabic: document.isArabic
                 };
+                this.$nextTick(() => {
+                    if(window.innerWidth < 767) {
+                        const element = window.document.getElementById('document-preview')
+                        const topPos = element.getBoundingClientRect().top + window.pageYOffset
+
+                        window.scrollTo({
+                            top: topPos, // scroll so that the element is at the top of the view
+                            behavior: 'smooth' // smooth scroll
+                        })
+                    }
+                })
             })
         }
     }

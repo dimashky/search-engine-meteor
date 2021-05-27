@@ -95,6 +95,13 @@ export default {
             indexing: false
         }
     },
+    watch: {
+      value(value) {
+          if(value) {
+              document.body.classList.add("")
+          }
+      }
+    },
     methods: {
         handleClose() {
             this.files = [];

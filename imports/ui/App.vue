@@ -1,19 +1,17 @@
 <template>
-    <div class="flex h-full items-center flex-col min-h-screen bg-gray-100 overflow-y-scroll">
-        <div class="w-full">
-            <div class="text-center mt-3">
-                <div class="text-2xl font-bold">Information Retrieval Homework F20</div>
-                <div class="flex gap-4 my-3 text-purple-800 items-center justify-center text-xl font-semibold">
-                    <span>mohamed_khair_128199</span>
-                    <span>iman_129732</span>
+    <div class="bg-gray-100">
+        <div class="container mx-auto flex h-full items-center flex-col min-h-screen bg-gray-100 overflow-y-scroll py-3 px-5">
+            <div class="w-full">
+                <div class="text-center mt-3">
+                    <div class="text-2xl font-bold">Simple Search Engine</div>
                 </div>
+                <search-input :loading="loading" @search="handleSearchChanged" @config="configModal = true" />
             </div>
-            <search-input :loading="loading" @search="handleSearchChanged" @config="configModal = true" />
+
+            <results-list v-if="results" v-show="!loading" :query-tokens="queryTokens" :results="results" />
+
+            <engine-config v-model="configModal" />
         </div>
-
-        <results-list v-if="results" v-show="!loading" :query-tokens="queryTokens" :results="results" />
-
-        <engine-config v-model="configModal" />
     </div>
 </template>
 
