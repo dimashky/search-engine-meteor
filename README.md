@@ -5,10 +5,15 @@ This project was a homework in my university [Syrian Virtual University](https:/
 
 The corpos uploaded within the repo inside `storage/docs` directory
 
-## Prerequest
+## Demo
+You can find a running instance deployed on heroku
+https://mws-ir.herokuapp.com/
+
+## Getting Started
+### Prerequisites
 Make sure you have installed meteor in your machine [here](https://www.meteor.com/developers/install).
 
-## How to run
+### Installing
 Install the packages first:
 ```
 npm install
@@ -27,3 +32,11 @@ Then call
 ```
 Meteor.call("createIndices")
 ```
+## Contributors
+
+<!-- Some user examples -->
+- [Mohamed Khair Dimashky](https://github.com/dimashky)
+
+## License
+
+This project is licensed under the <LICENSE NAME> - see the [LICENSE.md](LICENSE.md) file for details
